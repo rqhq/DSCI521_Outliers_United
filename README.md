@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project analyzes the structure of U.S. import tariffs to understand
+This section analyzes the structure of U.S. import tariffs to understand
 how different industries are protected under trade policy. Using tariff
 data from the **2025 U.S. Tariff Database**, the project explores
 patterns in tariff rates across product chapters and builds a **network
@@ -36,15 +36,15 @@ We skip chapters 98 and 99 as they are legislatures and not industrial sectors.
 
 ------------------------------------------------------------------------
 
-## Project Goals
+## Goals
 
-The project addresses three primary questions:
+The section addresses three primary questions:
 
 1.  **Which industries face the highest tariff protection?**
 2.  **Which industries operate under nearly free trade conditions?**
 3.  **Do industries cluster together based on their tariff structures?**
 
-Additionally, the project tests a broader hypothesis about trade policy
+Additionally, this section tests a broader hypothesis about trade policy
 behavior.
 
 ------------------------------------------------------------------------
@@ -71,7 +71,7 @@ Several preprocessing steps were performed:
 
 ## Exploratory Analysis
 
-The project first performs statistical and correlation analysis across
+We first performed statistical and correlation analysis across
 chapters.
 
 ### Key Observations
@@ -92,8 +92,7 @@ The analysis also identifies:
 
 ## Tariff Similarity Network
 
-To understand structural similarities between industries, the project
-constructs a **network graph**.
+To understand structural similarities between industries, we construct a **network graph**.
 
 ### Steps
 
