@@ -204,7 +204,7 @@ in Jupyter Notebook or VS Code.
 
 ## Overview
 
-This section identifies **tariff inversions** in the 2025 U.S. Harmonized Tariff Schedule —
+This section identifies **tariff inversions** in the 2025 U.S. Harmonized Tariff Schedule,
 cases where raw materials are taxed at a **higher rate** than the finished goods made from them.
 
 When raw materials are taxed more than finished imports, domestic manufacturers are
@@ -237,7 +237,7 @@ Chapters 98 and 99 are excluded as they are administrative, not product categori
 This section addresses three primary questions:
 
 1. **Which industries have the most severe tariff inversions?**
-2. **Which raw material → finished good pairs are most penalized?**
+2. **Which raw material - finished good pairs are most penalized?**
 3. **Do inversions exist consistently across unrelated industries?**
 
 ---
@@ -255,7 +255,7 @@ Several preprocessing steps were performed:
    - 26 keyword-based rules connect raw material chapters to finished good chapters
      across 6 industries.
 4. **BEA Validation**
-   - Every raw → finished pair is verified against the BEA Input-Output table.
+   - Every raw - finished pair is verified against the BEA Input-Output table.
    - Pairs must have at least $100M in documented industry flows to be confirmed.
 
 ---
@@ -270,7 +270,7 @@ For each rule, every matching raw item is compared against every matching finish
 Pairs where `raw_rate > finished_rate` are flagged as inversions.
 
 **Deduplication:**
-- Keep only the worst gap per unique raw → finished pair
+- Keep only the worst gap per unique raw - finished pair
 - Keep only one row per raw material (its single worst inversion)
 
 This produces a conservative lower bound — the true number of inversions
@@ -283,8 +283,8 @@ within our defined supply chains is significantly larger.
 - **682 inverted pairs** identified across 6 industries
 - All 682 pairs confirmed by BEA Input-Output flows
 - Food Processing has the largest average gap at **10.1 percentage points**
-- Worst single pair: raw peanuts (163.8%) → peanut butter (131.8%) = **32 pt gap**
-- Apparel & Textiles has the most inversions by volume — **349 of 682 pairs**
+- Worst single pair: raw peanuts (163.8%) -> peanut butter (131.8%) = **32 pt gap**
+- Apparel & Textiles has the most inversions by volume -> **349 of 682 pairs**
 - Inversions exist in every industry examined
 
 | Industry | Pairs | Avg Gap | Max Gap |
