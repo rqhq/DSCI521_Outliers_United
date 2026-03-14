@@ -196,6 +196,9 @@ Open and run:
 
 in Jupyter Notebook or VS Code.
 
+## Authors
+
+-   Jayesh Bane
 ------------------------------------------------------------------------
 # Supply Chain Tariff Inversion Analysis
 
@@ -335,6 +338,4 @@ in Jupyter Notebook or VS Code.
 
 
 
-## Authors
 
--   Jayesh Bane
