@@ -197,6 +197,141 @@ Open and run:
 in Jupyter Notebook or VS Code.
 
 ------------------------------------------------------------------------
+# Supply Chain Tariff Inversion Analysis
+
+## Overview
+
+This section identifies **tariff inversions** in the 2025 U.S. Harmonized Tariff Schedule —
+cases where raw materials are taxed at a **higher rate** than the finished goods made from them.
+
+When raw materials are taxed more than finished imports, domestic manufacturers are
+structurally penalized. It becomes cheaper to import the finished product than to
+import the ingredients and make it here.
+
+---
+
+## Dataset
+
+The datasets used in this project are:
+
+- **hts_cleaned.csv** — Cleaned 2025 Harmonized Tariff Schedule
+- **IOUse_Before_Redefinitions_PRO_Detail.xlsx** — BEA 2017 Input-Output Use Table
+
+The HTS dataset contains:
+
+- `hts8` — 8-digit Harmonized Tariff Schedule code
+- `brief_description` — Plain English product name
+- `rate_clean` — MFN tariff rate as a decimal
+- `has_adval` — Whether the item has a percentage-based rate
+- `chapter` — First two digits of HTS code, groups related products
+
+Chapters 98 and 99 are excluded as they are administrative, not product categories.
+
+---
+
+## Goals
+
+This section addresses three primary questions:
+
+1. **Which industries have the most severe tariff inversions?**
+2. **Which raw material → finished good pairs are most penalized?**
+3. **Do inversions exist consistently across unrelated industries?**
+
+---
+
+## Data Processing
+
+Several preprocessing steps were performed:
+
+1. **Rate Filtering**
+   - Only ad valorem (percentage-based) rates are kept.
+   - Specific rates such as $/kg cannot be compared to percentages and are excluded.
+2. **Chapter Extraction**
+   - First two digits of the HTS8 code determine the tariff chapter.
+3. **Supply Chain Mapping**
+   - 26 keyword-based rules connect raw material chapters to finished good chapters
+     across 6 industries.
+4. **BEA Validation**
+   - Every raw → finished pair is verified against the BEA Input-Output table.
+   - Pairs must have at least $100M in documented industry flows to be confirmed.
+
+---
+
+## Methodology
+
+We define supply chain relationships using keyword matching on HTS product descriptions.
+Each rule maps a raw material chapter to a finished good chapter using keywords that
+must appear in the product description.
+
+For each rule, every matching raw item is compared against every matching finished item.
+Pairs where `raw_rate > finished_rate` are flagged as inversions.
+
+**Deduplication:**
+- Keep only the worst gap per unique raw → finished pair
+- Keep only one row per raw material (its single worst inversion)
+
+This produces a conservative lower bound — the true number of inversions
+within our defined supply chains is significantly larger.
+
+---
+
+## Key Findings
+
+- **682 inverted pairs** identified across 6 industries
+- All 682 pairs confirmed by BEA Input-Output flows
+- Food Processing has the largest average gap at **10.1 percentage points**
+- Worst single pair: raw peanuts (163.8%) → peanut butter (131.8%) = **32 pt gap**
+- Apparel & Textiles has the most inversions by volume — **349 of 682 pairs**
+- Inversions exist in every industry examined
+
+| Industry | Pairs | Avg Gap | Max Gap |
+|---|---|---|---|
+| Food Processing | 34 | 10.1 pts | 32.0 pts |
+| Apparel & Textiles | 349 | 9.0 pts | 24.2 pts |
+| Electronics | 69 | 3.3 pts | 5.5 pts |
+| Automotive | 87 | 2.5 pts | 12.6 pts |
+| Leather & Footwear | 92 | 1.4 pts | 3.2 pts |
+| Metal Products | 51 | 0.9 pts | 1.0 pts |
+
+---
+
+## Technologies Used
+
+- **Python**
+- **Pandas** — data processing
+- **Matplotlib** — visualizations
+- **openpyxl** — BEA Excel file loading
+
+---
+
+## How to Run
+
+### 1. Install dependencies
+```bash
+pip install pandas matplotlib openpyxl
+```
+
+### 2. Place the datasets
+
+Add the following files into the project directory:
+
+    hts_cleaned.csv
+    IOUse_Before_Redefinitions_PRO_Detail.xlsx
+
+### 3. Run the notebook
+
+Open and run:
+
+    tariff_inversion_analysis.ipynb
+
+in Jupyter Notebook or VS Code.
+
+---
+
+## Authors
+
+- Ari Munkhtur
+
 
 
 
