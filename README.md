@@ -298,41 +298,6 @@ within our defined supply chains is significantly larger.
 
 ---
 
-## Technologies Used
-
-- **Python**
-- **Pandas** — data processing
-- **Matplotlib** — visualizations
-- **openpyxl** — BEA Excel file loading
-
----
-
-## How to Run
-
-### 1. Install dependencies
-```bash
-pip install pandas matplotlib openpyxl
-```
-
-### 2. Place the datasets
-
-Add the following files into the project directory:
-
-    hts_cleaned.csv
-    IOUse_Before_Redefinitions_PRO_Detail.xlsx
-
-### 3. Run the notebook
-
-Open and run:
-
-    tariff_inversion_analysis.ipynb
-
-in Jupyter Notebook or VS Code.
-
----
-
-## Authors
-
 - Ari Munkhtur
 
 
