@@ -344,7 +344,7 @@ Key columns used beyond the base HTS fields:
 
 ## Key Findings
 
-- **~36% of HTS items** exhibit a tariff inversion
+- ~36% of HTS items exhibit a tariff inversion
 - FTA programs cover roughly **62% of inverted items** and nearly fully eliminate the burden for high-tariff chapters
 - Inversion rate and FTA coverage move together. Industries hit hardest tend to have the most relief options
 - The bottom-right quadrant of the penalty matrix (high inversions + low FTA coverage) is empty, meaning the penalty is rescuable on paper for all high-inversion industries
