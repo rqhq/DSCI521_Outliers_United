@@ -345,14 +345,103 @@ Key columns used beyond the base HTS fields:
 ## Key Findings
 
 - ~36% of HTS items exhibit a tariff inversion
-- FTA programs cover roughly **62% of inverted items** and nearly fully eliminate the burden for high-tariff chapters
+- FTA programs cover roughly **62% of inverted items** and nearly fully eliminate the burden for high tariff chapters
 - Inversion rate and FTA coverage move together. Industries hit hardest tend to have the most relief options
-- The bottom-right quadrant of the penalty matrix (high inversions + low FTA coverage) is empty, meaning the penalty is rescuable on paper for all high-inversion industries
+- The bottom right quadrant of the penalty matrix (high inversions + low FTA coverage) is empty, meaning the penalty is rescuable on paper for all high-inversion industries
 - The real barrier is **supply chain flexibility**, not a policy gap
 
 ---
 
 - Ryan Quinlan
 
+# Tariff Share Time Series Analysis
 
+## Overview
+
+This section looks at industry level tariff share and import value from
+2012 to 2025. The goal is to find which industries carry the most tariff
+burden and what is actually driving changes over time: higher rates or
+higher import volumes.
+
+---
+
+## Dataset
+
+The datasets used in this project are:
+
+- **tariff_database/** — Annual HTS tariff schedule Excel files
+- **customs_value_2012_2025.xlsx** — Annual import value by HTS chapter
+
+Key columns used:
+
+- `hts8` — 8-digit Harmonized Tariff Schedule code
+- `tariff_amount` — Average tariff rate multiplied by import value
+- `import_value` — Total customs value of imports by chapter
+- `tariff_share` — Industry tariff amount divided by total tariff amount per year
+- `industry` — Mapped from HTS chapter ranges
+
+Chapters 98 and 99 are excluded as they are special provisions, not
+industrial sectors.
+
+---
+
+## Goals
+
+1. Which industries account for the highest share of total tariff burden?
+2. How has tariff share shifted across industries from 2012 to 2025?
+3. Are increases in tariff amount driven by rising rates or rising import volumes?
+
+---
+
+## Data Processing
+
+1. **Industry Mapping**
+   - HTS chapters grouped into broad industry categories based on
+     standard tariff schedule groupings
+2. **Time Series Construction**
+   - Annual tariff schedule merged with annual import value data by chapter
+   - Tariff amount computed by multiplying average chapter rate by import value
+3. **Tariff Share Calculation**
+   - Each industry's tariff amount divided by total tariff amount per year
+   - Removes the effect of overall trade volume growth
+
+---
+
+## Key Findings
+
+- Machinery and Electrical Equipment has the highest tariff share and
+  highest import volume across the entire period, around 20% of total
+  tariff share
+- Textile tariff share has been declining since 2016
+- Chemical Products have shown steady growth over the same period
+- A clear disruption is visible in 2019-2020 across most industries
+- Tariff share distribution shifted significantly after 2018, not stable
+
+## Conclusion
+
+- High tariffs have not stopped import growth. Machinery imports kept
+  growing despite being the most tariffed category. Demand does not
+  respond to these tariff levels.
+- Changes in import volume had a bigger impact on total tariff collection
+  than changes in rates
+- Recent increases in tariff revenue are driven by more imports, not
+  higher rates
+
+---
+
+## Important Trade Events
+
+| Year | Event |
+|---|---|
+| 2017 | Trans-Pacific Partnership Withdrawal |
+| 2018-2019 | China Trade War |
+| 2020 | COVID-19 |
+| 2021 | Global Supply Chain Crisis |
+| 2022 | Russia-Ukraine War |
+
+---
+
+## Authors
+
+- Ashay Patla
 
