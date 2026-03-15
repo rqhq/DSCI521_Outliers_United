@@ -300,7 +300,59 @@ within our defined supply chains is significantly larger.
 
 - Ari Munkhtur
 
+------------------------------------------------------------------------
+# FTA Relief & Tariff Inversion Analysis
 
+## Overview
+
+This section asks a follow-up question to the inversion work above.
+When those inversions exist, do Free Trade Agreement programs actually
+rescue manufacturers from the penalty? Using the same 2025 HTS dataset,
+it maps every available FTA preference rate against the MFN burden to
+see how much relief is realistically available, and for which industries
+it falls short.
+
+---
+
+## Dataset
+
+- **tariff_database_2025.xlsx** — same dataset used across the project
+
+Key columns used beyond the base HTS fields:
+- 19 FTA/preference rate columns (USMCA, KORUS, GSP, AGOA, etc.)
+- `mfn_ad_val_rate` — full tariff burden without any FTA
+- `col2_ad_val_rate` — penalty rate for non-normal trade relations countries
+
+---
+
+## Goals
+
+1. **How widespread are tariff inversions across the full schedule?**
+2. **How much do FTA programs offset those inversions?**
+3. **Which industries remain penalized even after FTA relief is applied?**
+
+---
+
+## Methodology
+
+- Inversions flagged by comparing each item's MFN rate to its heading average (threshold: >0.5%)
+- Best available FTA rate computed across all 19 agreement columns per item
+- FTA relief = MFN rate minus best FTA rate
+- Results combined into a **Manufacturing Penalty Matrix** plotting inversion rate vs. FTA coverage by chapter
+
+---
+
+## Key Findings
+
+- **~36% of HTS items** exhibit a tariff inversion
+- FTA programs cover roughly **62% of inverted items** and nearly fully eliminate the burden for high-tariff chapters
+- Inversion rate and FTA coverage move together. Industries hit hardest tend to have the most relief options
+- The bottom-right quadrant of the penalty matrix (high inversions + low FTA coverage) is empty, meaning the penalty is rescuable on paper for all high-inversion industries
+- The real barrier is **supply chain flexibility**, not a policy gap
+
+---
+
+- Ryan Quinlan
 
 
 
